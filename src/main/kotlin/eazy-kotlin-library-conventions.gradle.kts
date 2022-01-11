@@ -3,6 +3,7 @@ plugins {
 
     id("java-library")
     id("maven-publish")
+    id("org.cyclonedx.bom")
 }
 
 publishing {
@@ -22,6 +23,10 @@ publishing {
 }
 
 tasks {
+    check {
+        finalizedBy(cyclonedxBom)
+    }
+
     jar {
         manifest {
             attributes["Implementation-Version"] = project.version
