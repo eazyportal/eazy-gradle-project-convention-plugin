@@ -1,25 +1,9 @@
 plugins {
     id("eazy-kotlin-conventions")
+    id("eazy-publish-conventions")
 
     id("java-library")
-    id("maven-publish")
     id("org.cyclonedx.bom")
-}
-
-publishing {
-    repositories {
-        mavenLocal()
-    }
-
-    publications {
-        create<MavenPublication>("maven") {
-            groupId = project.group.toString()
-            artifactId = project.name
-            version = project.version.toString()
-
-            from(project.components["kotlin"])
-        }
-    }
 }
 
 tasks {
