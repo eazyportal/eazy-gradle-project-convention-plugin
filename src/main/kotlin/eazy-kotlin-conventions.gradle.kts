@@ -8,7 +8,14 @@ plugins {
 
 repositories {
     mavenCentral()
+
     gradlePluginPortal()
+
+    maven {
+        name = "github"
+        url = uri("https://maven.pkg.github.com/eazyportal/*")
+        credentials(PasswordCredentials::class.java)
+    }
 }
 
 java {
