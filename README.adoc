@@ -1,2 +1,2 @@
-= EazyGradleProjectConventionPlugin
+= eazy-project-convention Gradle Plugin
 :toc:

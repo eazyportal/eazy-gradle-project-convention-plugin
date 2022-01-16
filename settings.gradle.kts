@@ -1,1 +1,1 @@
-rootProject.name = "eazy-gradle-project-convention-plugin"
+rootProject.name = "eazy-project-convention-gradle-plugin"
