@@ -1,2 +1,64 @@
 = eazy-project-convention Gradle Plugin
 :toc:
+:icons: font
+
+This repository contains Gradle project conventions for EazyPortal Gradle projects.
+These conventions are released in a Gradle plugin format to make it easier to include any projects.
+
+== How to use this plugin?
+
+To be able to use this plugin, first it is required to configure a few things.
+
+=== Configure GitHub Packages as Gradle repository
+
+Configure GitHub credentials and url in the global Gradle properties file:
+
+.$USER_HOME\.gradle\gradle.properties
+[source,properties]
+----
+githubUrl = https://maven.pkg.github.com/eazyportal/
+githubUsername = "GitHub user name"
+githubPassword = "GitHub API key"
+----
+
+=== Configure project to use GitHub Packages
+
+After configuring Gradle to be able to connect/authenticate to GitHub Packages, it is required to tell the project from where to download the EazyPortal dependencies.
+Simply add this configuration to the settings file of your project.
+
+.settings.gradle.kts
+[source,kotlin]
+----
+pluginManagement {
+    repositories {
+        maven {
+            val githubUrl: String by settings
+
+            name = "github"
+
+            url = uri("$githubUrl/*")
+            credentials(PasswordCredentials::class)
+        }
+    }
+}
+----
+
+=== Include the plugin to the project
+
+This repository contains multiple plugins, which are listed here:
+
+.Available plugins
+|===
+|plugin id|description
+
+|eazy-kotlin-conventions
+|A convention with preconfigured Kotlin, Junit, JaCoCo, and repositories.
+
+|eazy-kotlin-library-conventions
+|A convention which combines the `eazy-kotlin-conventions` and the `eazy-publish-conventions` conventions, and SBOM generation.
+
+|eazy-publish-conventions
+|A convention with preconfigured maven publication.
+Snapshots are published to mavenLocal, while releases are published to EazyPortal's GitHub Packages.
+
+|===
