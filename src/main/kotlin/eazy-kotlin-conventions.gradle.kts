@@ -13,8 +13,9 @@ repositories {
 
     maven {
         name = "github"
-        url = uri("https://maven.pkg.github.com/eazyportal/*")
+
         credentials(PasswordCredentials::class.java)
+        url = uri("${project.properties["githubUrl"]!!}/*")
     }
 }
 
