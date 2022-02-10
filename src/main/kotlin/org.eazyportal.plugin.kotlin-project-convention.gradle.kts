@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("eazy-java-conventions")
+    id("org.eazyportal.plugin.java-project-convention")
 
     id("org.jetbrains.kotlin.jvm")
 }

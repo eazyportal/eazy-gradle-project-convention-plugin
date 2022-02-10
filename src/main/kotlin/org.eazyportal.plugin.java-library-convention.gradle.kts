@@ -1,6 +1,6 @@
 plugins {
-    id("eazy-java-conventions")
-    id("eazy-publish-conventions")
+    id("org.eazyportal.plugin.java-project-convention")
+    id("org.eazyportal.plugin.publish-convention")
 
     id("java-library")
     id("org.cyclonedx.bom")
