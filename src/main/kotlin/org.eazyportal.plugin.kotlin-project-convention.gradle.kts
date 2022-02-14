@@ -11,3 +11,7 @@ tasks {
         kotlinOptions.jvmTarget = "11"
     }
 }
+
+dependencies {
+    testImplementation("org.mockito.kotlin", "mockito-kotlin", "+")
+}
