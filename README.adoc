@@ -1,2 +1,77 @@
-= EazyGradleProjectConventionPlugin
+= eazy-project-convention Gradle Plugin
 :toc:
+:icons: font
+
+This repository contains Gradle project conventions for EazyPortal Gradle projects.
+
+== How to use this plugin?
+
+This chapter describes the necessary pre-configurations and how to include these conventions to a project.
+
+=== Configure GitHub Packages as Gradle repository
+
+Configure GitHub credentials and url in the global Gradle properties file:
+
+.$USER_HOME\.gradle\gradle.properties
+[source,properties]
+----
+githubUrl = https://maven.pkg.github.com/eazyportal/
+githubUsername = "GitHub user name"
+githubPassword = "GitHub API key"
+----
+
+=== Configure project to use GitHub Packages as plugin repository
+
+Configure Gradle's `pluginManagement` to authenticate to GitHub Packages with adding a new repository to the settings file.
+
+.settings.gradle.kts
+[source,kotlin]
+----
+pluginManagement {
+    ...
+    repositories {
+        maven {
+            val githubUrl: String by settings
+
+            name = "github"
+            url = uri("$githubUrl/*")
+            credentials(PasswordCredentials::class)
+        }
+    }
+    ...
+}
+----
+
+=== Include convention to the project
+
+Add any of the following conventions to the project.
+
+.build.gradle.kts
+[source,kotlin]
+----
+plugins {
+    id("${CONVENTION_ID}")
+}
+----
+
+.Available conventions
+|===
+|convention id|description
+
+|org.eazyportal.plugin.java-project-convention
+|Configures Java, Junit, JaCoCo, and repositories.
+
+|org.eazyportal.plugin.java-library-convention
+|Extends the `org.eazyportal.plugin.java-project-convention` and the `org.eazyportal.plugin.publish-convention` conventions, and adds SBOM generation.
+
+|org.eazyportal.plugin.kotlin-project-convention
+|Extends the `org.eazyportal.plugin.java-project-convention` and preconfigures Kotlin.
+
+|org.eazyportal.plugin.kotlin-library-convention
+|Extends the `org.eazyportal.plugin.java-project-convention` and  the `org.eazyportal.plugin.kotlin-project-convention` conventions.
+
+|org.eazyportal.plugin.publish-convention
+|Configures maven publication.
+Snapshots are published to `mavenLocal`, while releases are published to EazyPortal's GitHub Packages.
+
+|===
