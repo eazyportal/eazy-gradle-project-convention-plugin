@@ -9,7 +9,17 @@ repositories {
 
 publishing {
     repositories {
-        mavenLocal()
+        if (project.version.toString().endsWith("-SNAPSHOT")) {
+            mavenLocal()
+        }
+        else {
+            maven {
+                name = "github"
+
+                credentials(PasswordCredentials::class)
+                url = uri("${project.properties["githubUrl"]!!}/${project.rootProject.name}")
+            }
+        }
     }
 }
 
