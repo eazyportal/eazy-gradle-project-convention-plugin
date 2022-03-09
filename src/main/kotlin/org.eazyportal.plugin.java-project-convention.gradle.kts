@@ -15,6 +15,8 @@ repositories {
         credentials(PasswordCredentials::class.java)
         url = uri("${project.properties["githubUrl"]!!}/*")
     }
+
+    mavenLocal()
 }
 
 java {
