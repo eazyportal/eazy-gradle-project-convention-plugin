@@ -23,6 +23,11 @@ java {
 }
 
 tasks {
+    compileJava {
+        options.compilerArgs.add("-Xlint:unchecked")
+        options.isDeprecation = true
+    }
+
     test {
         useJUnitPlatform()
 
