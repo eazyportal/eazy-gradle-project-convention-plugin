@@ -15,6 +15,8 @@ repositories {
         credentials(PasswordCredentials::class.java)
         url = uri("${project.properties["githubUrl"]!!}/*")
     }
+
+    mavenLocal()
 }
 
 java {
@@ -23,6 +25,11 @@ java {
 }
 
 tasks {
+    compileJava {
+        options.compilerArgs.add("-Xlint:unchecked")
+        options.isDeprecation = true
+    }
+
     test {
         useJUnitPlatform()
 

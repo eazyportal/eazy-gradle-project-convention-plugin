@@ -3,29 +3,26 @@ plugins {
 }
 
 publishing {
-    if (project.version.toString().endsWith("-SNAPSHOT")) {
-        repositories {
-            mavenLocal()
-        }
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = project.group.toString()
+            artifactId = project.name
+            version = project.version.toString()
 
-        // publishing to mavenLocal needs to have a publication configured
-        publications {
-            create<MavenPublication>("maven") {
-                groupId = project.group.toString()
-                artifactId = project.name
-                version = project.version.toString()
-
-                from(project.components["java"])
-            }
+            from(project.components["java"])
         }
     }
-    else { // release
-        repositories {
+
+    repositories {
+        if (project.version.toString().endsWith("-SNAPSHOT")) {
+            mavenLocal()
+        }
+        else {
             maven {
                 name = "github"
+                url = uri("${project.properties["githubUrl"]!!}/${project.rootProject.name}")
 
                 credentials(PasswordCredentials::class)
-                url = uri("${project.properties["githubUrl"]!!}/${project.rootProject.name}")
             }
         }
     }

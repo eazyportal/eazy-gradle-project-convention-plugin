@@ -6,6 +6,10 @@ plugins {
     id("org.cyclonedx.bom")
 }
 
+java {
+    withSourcesJar()
+}
+
 tasks {
     check {
         finalizedBy(cyclonedxBom)
