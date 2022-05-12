@@ -7,6 +7,14 @@ repositories {
     gradlePluginPortal()
 }
 
+tasks {
+    jar {
+        manifest {
+            attributes["Implementation-Version"] = project.version
+        }
+    }
+}
+
 publishing {
     repositories {
         if (project.version.toString().endsWith("-SNAPSHOT")) {
