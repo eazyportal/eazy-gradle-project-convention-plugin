@@ -36,8 +36,16 @@ tasks {
         finalizedBy(jacocoTestReport)
     }
 
+    jacocoTestCoverageVerification {
+        dependsOn(test)
+
+        classDirectories.setFrom(getFilteredFiles(classDirectories.files, project))
+    }
+
     jacocoTestReport {
         dependsOn(test)
+
+        classDirectories.setFrom(getFilteredFiles(classDirectories.files, project))
     }
 }
 
@@ -47,3 +55,22 @@ dependencies {
     testImplementation("org.junit.jupiter", "junit-jupiter", "+")
     testImplementation("org.mockito", "mockito-inline", "+")
 }
+
+fun getFilteredFiles(files: Set<File>, project: Project): List<File> = files
+    .map {
+        project.fileTree(it) {
+            exclude(
+                "**/config/**",
+                "**/exception/**",
+                "**/model/**",
+                "**/*Configuration.*",
+                "**/*Configurer.*",
+                "**/*ConfigurerAdapter.*",
+                "**/*ErrorHandler.*",
+                "**/*Exception.*",
+                "**/*ExceptionHandler.*"
+            )
+        }
+    }
+    .flatMap { it.files }
+    .toList()
