@@ -4,6 +4,12 @@ plugins {
     id("java")
 }
 
+if (project == project.rootProject) {
+    apply {
+        plugin("jacoco-report-aggregation")
+    }
+}
+
 repositories {
     mavenCentral()
 
