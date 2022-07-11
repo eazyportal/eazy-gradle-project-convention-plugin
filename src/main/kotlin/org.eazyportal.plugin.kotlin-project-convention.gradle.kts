@@ -12,7 +12,3 @@ tasks {
         kotlinOptions.jvmTarget = java.targetCompatibility.toString()
     }
 }
-
-dependencies {
-    testImplementation("org.mockito.kotlin", "mockito-kotlin", "+")
-}
