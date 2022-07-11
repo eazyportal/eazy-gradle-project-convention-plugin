@@ -7,6 +7,7 @@ plugins {
 if (project == project.rootProject) {
     apply {
         plugin("jacoco-report-aggregation")
+        plugin("org.eazyportal.plugin.dependency-version-lock-convention")
     }
 }
 

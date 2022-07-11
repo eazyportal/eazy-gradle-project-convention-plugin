@@ -13,6 +13,14 @@ tasks {
             attributes["Implementation-Version"] = project.version
         }
     }
+
+    register("lockDependencyVersion") {
+        enabled = false
+    }
+
+    register("unlockDependencyVersion") {
+        enabled = false
+    }
 }
 
 publishing {
