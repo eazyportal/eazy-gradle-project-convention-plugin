@@ -7,6 +7,10 @@ repositories {
     gradlePluginPortal()
 }
 
+kotlinDslPluginOptions {
+    jvmTarget.set(provider { java.targetCompatibility.toString() })
+}
+
 tasks {
     jar {
         manifest {

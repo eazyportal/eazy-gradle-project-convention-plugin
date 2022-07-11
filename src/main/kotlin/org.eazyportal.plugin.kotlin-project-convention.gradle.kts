@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     id("org.eazyportal.plugin.java-project-convention")
 
@@ -5,9 +7,9 @@ plugins {
 }
 
 tasks {
-    compileKotlin {
+    withType<KotlinCompile> {
         kotlinOptions.allWarningsAsErrors = true
-        kotlinOptions.jvmTarget = "11"
+        kotlinOptions.jvmTarget = java.targetCompatibility.toString()
     }
 }
 
