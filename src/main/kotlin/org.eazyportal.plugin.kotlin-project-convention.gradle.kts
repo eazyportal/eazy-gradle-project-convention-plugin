@@ -6,6 +6,12 @@ plugins {
     id("org.jetbrains.kotlin.jvm")
 }
 
+kotlin {
+    jvmToolchain {
+        (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(java.targetCompatibility.toString()))
+    }
+}
+
 tasks {
     withType<KotlinCompile> {
         kotlinOptions.allWarningsAsErrors = true
