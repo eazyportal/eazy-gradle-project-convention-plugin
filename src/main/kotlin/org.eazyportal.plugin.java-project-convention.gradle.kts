@@ -7,6 +7,7 @@ plugins {
 if (project == project.rootProject) {
     apply {
         plugin("jacoco-report-aggregation")
+        plugin("org.eazyportal.plugin.dependency-version-lock-convention")
     }
 }
 
@@ -18,7 +19,11 @@ repositories {
     maven {
         name = "github"
 
-        credentials(PasswordCredentials::class.java)
+        credentials {
+            password = "${project.properties["githubPassword"]!!}"
+            username = "${project.properties["githubUsername"]!!}"
+        }
+
         url = uri("${project.properties["githubUrl"]!!}/*")
     }
 
@@ -26,8 +31,9 @@ repositories {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(JavaVersion.VERSION_11.toString()))
+    }
 }
 
 tasks {

@@ -20,9 +20,13 @@ publishing {
         else {
             maven {
                 name = "github"
-                url = uri("${project.properties["githubUrl"]!!}/${project.rootProject.name}")
 
-                credentials(PasswordCredentials::class)
+                credentials {
+                    password = "${project.properties["githubPassword"]!!}"
+                    username = "${project.properties["githubUsername"]!!}"
+                }
+
+                url = uri("${project.properties["githubUrl"]!!}/${project.rootProject.name}")
             }
         }
     }
