@@ -19,7 +19,11 @@ repositories {
     maven {
         name = "github"
 
-        credentials(PasswordCredentials::class.java)
+        credentials {
+            password = "${project.properties["githubPassword"]!!}"
+            username = "${project.properties["githubUsername"]!!}"
+        }
+
         url = uri("${project.properties["githubUrl"]!!}/*")
     }
 
