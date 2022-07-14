@@ -3,6 +3,8 @@ plugins {
     id("maven-publish")
 }
 
+apply(from = "src/main/kotlin/org.eazyportal.plugin.dependency-version-lock-convention.gradle.kts")
+
 repositories {
     gradlePluginPortal()
 }
@@ -28,14 +30,6 @@ tasks {
         manifest {
             attributes["Implementation-Version"] = project.version
         }
-    }
-
-    register("lockDependencyVersion") {
-        enabled = false
-    }
-
-    register("unlockDependencyVersion") {
-        enabled = false
     }
 }
 
