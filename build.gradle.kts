@@ -40,6 +40,16 @@ tasks {
 }
 
 publishing {
+    publications {
+        withType<MavenPublication> {
+            versionMapping {
+                allVariants {
+                    fromResolutionResult()
+                }
+            }
+        }
+    }
+
     repositories {
         if (project.version.toString().endsWith("-SNAPSHOT")) {
             mavenLocal()
