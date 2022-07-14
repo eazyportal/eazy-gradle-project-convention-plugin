@@ -9,18 +9,6 @@ repositories {
     gradlePluginPortal()
 }
 
-java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(JavaVersion.VERSION_11.toString()))
-    }
-}
-
-kotlin {
-    jvmToolchain {
-        (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(java.targetCompatibility.toString()))
-    }
-}
-
 kotlinDslPluginOptions {
     jvmTarget.set(provider { java.targetCompatibility.toString() })
 }
