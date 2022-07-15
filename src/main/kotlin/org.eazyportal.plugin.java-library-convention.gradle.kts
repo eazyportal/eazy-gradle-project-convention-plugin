@@ -22,6 +22,8 @@ tasks {
                 .filter { !it.isVisible || !it.isCanBeResolved }
                 .map { it.name }
         )
+
+        outputFormat.set("json")
     }
 
     jar {
