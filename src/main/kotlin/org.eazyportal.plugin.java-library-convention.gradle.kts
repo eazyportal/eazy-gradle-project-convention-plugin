@@ -16,6 +16,14 @@ tasks {
         finalizedBy(cyclonedxBom)
     }
 
+    cyclonedxBom {
+        skipConfigs.set(
+            project.configurations
+                .filter { !it.isVisible || !it.isCanBeResolved }
+                .map { it.name }
+        )
+    }
+
     jar {
         manifest {
             attributes["Implementation-Version"] = project.version
