@@ -9,8 +9,8 @@ sourceSets {
     }
 }
 
-configurations["integrationTestImplementation"].extendsFrom(configurations.implementation.get())
-configurations["integrationTestRuntimeOnly"].extendsFrom(configurations.runtimeOnly.get())
+configurations["integrationTestImplementation"].extendsFrom(configurations.testImplementation.get())
+configurations["integrationTestRuntimeOnly"].extendsFrom(configurations.testRuntimeOnly.get())
 
 val integrationTest = task<Test>("integrationTest") {
     group = "verification"

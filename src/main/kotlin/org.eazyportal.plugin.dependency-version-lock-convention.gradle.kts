@@ -14,6 +14,8 @@ project.beforeEvaluate {
 
 dependencyLocking {
     lockAllConfigurations()
+
+    lockMode.set(LockMode.LENIENT)
 }
 
 tasks{

@@ -3,20 +3,10 @@ plugins {
     id("maven-publish")
 }
 
+apply(from = "src/main/kotlin/org.eazyportal.plugin.dependency-version-lock-convention.gradle.kts")
+
 repositories {
     gradlePluginPortal()
-}
-
-java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(JavaVersion.VERSION_11.toString()))
-    }
-}
-
-kotlin {
-    jvmToolchain {
-        (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(java.targetCompatibility.toString()))
-    }
 }
 
 kotlinDslPluginOptions {
@@ -29,17 +19,19 @@ tasks {
             attributes["Implementation-Version"] = project.version
         }
     }
-
-    register("lockDependencyVersion") {
-        enabled = false
-    }
-
-    register("unlockDependencyVersion") {
-        enabled = false
-    }
 }
 
 publishing {
+    publications {
+        withType<MavenPublication> {
+            versionMapping {
+                allVariants {
+                    fromResolutionResult()
+                }
+            }
+        }
+    }
+
     repositories {
         if (project.version.toString().endsWith("-SNAPSHOT")) {
             mavenLocal()
