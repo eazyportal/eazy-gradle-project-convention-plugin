@@ -48,6 +48,10 @@ publishing {
 }
 
 dependencies {
-    implementation("org.cyclonedx.bom", "org.cyclonedx.bom.gradle.plugin", "+")
     implementation("org.jetbrains.kotlin", "kotlin-gradle-plugin")
+
+    implementation("org.asciidoctor.jvm.convert", "org.asciidoctor.jvm.convert.gradle.plugin", project.properties["asciidoctorPluginVersion"] as String)
+    implementation("org.asciidoctor.jvm.gems", "org.asciidoctor.jvm.gems.gradle.plugin", project.properties["asciidoctorPluginVersion"] as String)
+
+    implementation("org.cyclonedx.bom", "org.cyclonedx.bom.gradle.plugin", project.properties["cyclonedxPluginVersion"] as String)
 }
