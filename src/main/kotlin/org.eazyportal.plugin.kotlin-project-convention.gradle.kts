@@ -8,13 +8,13 @@ plugins {
 
 kotlin {
     jvmToolchain {
-        (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(java.targetCompatibility.toString()))
+        (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(JavaVersion.VERSION_17.toString()))
     }
 }
 
 tasks {
     withType<KotlinCompile> {
         kotlinOptions.allWarningsAsErrors = true
-        kotlinOptions.jvmTarget = java.targetCompatibility.toString()
+        kotlinOptions.jvmTarget = JavaVersion.VERSION_17.toString()
     }
 }

@@ -11,12 +11,12 @@ repositories {
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(JavaVersion.VERSION_11.toString()))
+        languageVersion.set(JavaLanguageVersion.of(JavaVersion.VERSION_17.toString()))
     }
 }
 
 kotlinDslPluginOptions {
-    jvmTarget.set(JavaVersion.VERSION_11.toString())
+    jvmTarget.set(JavaVersion.VERSION_17.toString())
 }
 
 tasks {
