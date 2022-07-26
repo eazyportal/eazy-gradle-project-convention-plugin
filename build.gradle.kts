@@ -9,8 +9,14 @@ repositories {
     gradlePluginPortal()
 }
 
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(JavaVersion.VERSION_11.toString()))
+    }
+}
+
 kotlinDslPluginOptions {
-    jvmTarget.set(provider { java.targetCompatibility.toString() })
+    jvmTarget.set(JavaVersion.VERSION_11.toString())
 }
 
 tasks {
