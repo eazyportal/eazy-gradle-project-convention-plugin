@@ -17,10 +17,11 @@ tasks {
     }
 
     cyclonedxBom {
-        skipConfigs.set(
+        includeConfigs.set(
             project.configurations
-                .filter { !it.isVisible || !it.isCanBeResolved }
+                .filter { it.isCanBeResolved }
                 .map { it.name }
+                .filter { it.endsWith("classpath", true) }
         )
 
         outputFormat.set("json")
