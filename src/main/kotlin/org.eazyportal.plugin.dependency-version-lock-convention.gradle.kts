@@ -26,6 +26,7 @@ tasks{
         doLast {
             val ignoreConfigurations = listOf(
                 "archives",
+                "asciidoctor",
                 "CodeCoverage",
                 "default",
                 "jacoco"
