@@ -9,6 +9,8 @@ repositories {
     ruby {
         gems()
     }
+
+    mavenCentral()
 }
 
 tasks.getByName("asciidoctor", AsciidoctorTask::class) {
