@@ -1,3 +1,4 @@
+import org.eazyportal.plugin.convention.extension.getJavaVersion
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -8,13 +9,15 @@ plugins {
 
 kotlin {
     jvmToolchain {
-        (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(JavaVersion.VERSION_17.toString()))
+        (this as JavaToolchainSpec).languageVersion.set(project.getJavaVersion())
     }
 }
 
 tasks {
     withType<KotlinCompile> {
-        kotlinOptions.allWarningsAsErrors = true
-        kotlinOptions.jvmTarget = JavaVersion.VERSION_17.toString()
+        kotlinOptions {
+            allWarningsAsErrors = true
+            jvmTarget = project.getJavaVersion().toString()
+        }
     }
 }

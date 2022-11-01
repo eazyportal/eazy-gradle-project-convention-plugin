@@ -12,11 +12,11 @@ java {
 }
 
 tasks {
-    check {
-        finalizedBy(cyclonedxBom)
-    }
+    getByName("publish").dependsOn("cyclonedxBom")
 
     cyclonedxBom {
+        mustRunAfter("check")
+
         includeConfigs.set(
             project.configurations
                 .filter { it.isCanBeResolved }
