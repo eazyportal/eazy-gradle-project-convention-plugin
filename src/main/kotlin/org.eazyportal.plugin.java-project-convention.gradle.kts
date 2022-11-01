@@ -1,3 +1,5 @@
+import org.eazyportal.plugin.convention.extension.getJavaVersion
+
 plugins {
     id("jacoco")
 
@@ -32,7 +34,7 @@ repositories {
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(JavaVersion.VERSION_17.toString()))
+        languageVersion.set(project.getJavaVersion())
     }
 }
 
