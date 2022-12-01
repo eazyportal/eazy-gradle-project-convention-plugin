@@ -15,6 +15,7 @@ tasks {
     getByName("publish").dependsOn("cyclonedxBom")
 
     cyclonedxBom {
+        dependsOn("jar", "build")
         mustRunAfter("check")
 
         includeConfigs.set(

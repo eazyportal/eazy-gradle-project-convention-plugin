@@ -17,6 +17,7 @@ tasks {
     withType<KotlinCompile> {
         kotlinOptions {
             allWarningsAsErrors = true
+            freeCompilerArgs = listOf("-Xjsr305=strict")
             jvmTarget = project.getJavaVersion().toString()
         }
     }
