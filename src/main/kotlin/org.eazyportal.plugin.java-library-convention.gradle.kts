@@ -22,7 +22,10 @@ tasks {
             project.configurations
                 .filter { it.isCanBeResolved }
                 .map { it.name }
-                .filter { it.endsWith("classpath", true) }
+                .filter {
+                    it.endsWith("classpath", true) ||
+                    it.startsWith("detachedConfiguration", true)
+                }
         )
 
         outputFormat.set("json")
