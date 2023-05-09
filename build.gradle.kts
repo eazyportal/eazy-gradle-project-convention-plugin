@@ -15,10 +15,6 @@ java {
     }
 }
 
-kotlinDslPluginOptions {
-    jvmTarget.set(JavaVersion.VERSION_17.toString())
-}
-
 tasks {
     jar {
         manifest {
