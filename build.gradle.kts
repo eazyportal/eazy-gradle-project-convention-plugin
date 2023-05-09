@@ -1,4 +1,6 @@
 plugins {
+    id("org.eazyportal.plugin.release")
+
     `kotlin-dsl`
 }
 
