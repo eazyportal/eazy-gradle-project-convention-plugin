@@ -7,6 +7,10 @@ plugins {
 apply(from = "src/main/kotlin/org.eazyportal.plugin.dependency-version-lock-convention.gradle.kts")
 apply(from = "src/main/kotlin/org.eazyportal.plugin.publish-convention.gradle.kts")
 
+gradlePlugin {
+    isAutomatedPublishing = false
+}
+
 repositories {
     gradlePluginPortal()
 }
