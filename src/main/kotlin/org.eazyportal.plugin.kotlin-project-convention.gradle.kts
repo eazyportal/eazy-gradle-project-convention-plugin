@@ -2,9 +2,9 @@ import org.eazyportal.plugin.convention.extension.getJavaVersion
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("org.eazyportal.plugin.java-project-convention")
-
     id("org.jetbrains.kotlin.jvm")
+
+    id("org.eazyportal.plugin.java-project-convention")
 }
 
 tasks {

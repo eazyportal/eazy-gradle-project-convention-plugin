@@ -1,7 +1,7 @@
 plugins {
-    id("org.eazyportal.plugin.release")
-
     `kotlin-dsl`
+
+    id("org.eazyportal.plugin.release")
 }
 
 apply(from = "src/main/kotlin/org.eazyportal.plugin.dependency-version-lock-convention.gradle.kts")
