@@ -1,8 +1,6 @@
-plugins {
-    id("maven-publish")
-}
+plugins.apply("maven-publish")
 
-publishing {
+configure<PublishingExtension> {
     publications {
         create("maven", MavenPublication::class) {
             groupId = project.group.toString()
@@ -10,7 +8,9 @@ publishing {
             version = project.version.toString()
 
             from(project.components["java"])
+        }
 
+        withType<MavenPublication> {
             versionMapping {
                 allVariants {
                     fromResolutionResult()

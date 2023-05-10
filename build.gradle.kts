@@ -1,9 +1,15 @@
 plugins {
+    id("org.eazyportal.plugin.release")
+
     `kotlin-dsl`
-    id("maven-publish")
 }
 
 apply(from = "src/main/kotlin/org.eazyportal.plugin.dependency-version-lock-convention.gradle.kts")
+apply(from = "src/main/kotlin/org.eazyportal.plugin.publish-convention.gradle.kts")
+
+gradlePlugin {
+    isAutomatedPublishing = false
+}
 
 repositories {
     gradlePluginPortal()
@@ -15,40 +21,10 @@ java {
     }
 }
 
-kotlinDslPluginOptions {
-    jvmTarget.set(JavaVersion.VERSION_17.toString())
-}
-
 tasks {
     jar {
         manifest {
             attributes["Implementation-Version"] = project.version
-        }
-    }
-}
-
-publishing {
-    publications {
-        withType<MavenPublication> {
-            versionMapping {
-                allVariants {
-                    fromResolutionResult()
-                }
-            }
-        }
-    }
-
-    repositories {
-        if (project.version.toString().endsWith("-SNAPSHOT")) {
-            mavenLocal()
-        }
-        else {
-            maven {
-                name = "github"
-
-                credentials(PasswordCredentials::class)
-                url = uri("${project.properties["githubUrl"]!!}/${project.rootProject.name}")
-            }
         }
     }
 }

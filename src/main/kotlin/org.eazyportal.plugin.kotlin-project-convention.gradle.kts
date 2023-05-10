@@ -7,12 +7,6 @@ plugins {
     id("org.jetbrains.kotlin.jvm")
 }
 
-kotlin {
-    jvmToolchain {
-        (this as JavaToolchainSpec).languageVersion.set(project.getJavaVersion())
-    }
-}
-
 tasks {
     withType<KotlinCompile> {
         kotlinOptions {
