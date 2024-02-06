@@ -1,5 +1,6 @@
 plugins {
     id("java") apply false
+    id("jvm-test-suite") apply false
 }
 
 sourceSets {
@@ -12,17 +13,29 @@ sourceSets {
 configurations["integrationTestImplementation"].extendsFrom(configurations.testImplementation.get())
 configurations["integrationTestRuntimeOnly"].extendsFrom(configurations.testRuntimeOnly.get())
 
-val integrationTest = task<Test>("integrationTest") {
-    group = "verification"
+testing {
+    suites {
+        register<JvmTestSuite>("integrationTest") {
+            group = "verification"
 
-    testClassesDirs = sourceSets["integration-test"].output.classesDirs
-    classpath = sourceSets["integration-test"].runtimeClasspath
+            dependencies {
+                implementation(project())
+            }
 
-    shouldRunAfter("test")
+            targets {
+                all {
+                    testTask.configure {
+                        testClassesDirs = sourceSets["integration-test"].output.classesDirs
+                        classpath = sourceSets["integration-test"].runtimeClasspath
 
-    useJUnitPlatform()
+                        shouldRunAfter("test")
+                    }
+                }
+            }
+        }
+    }
 }
 
 tasks.check {
-    dependsOn(integrationTest)
+    dependsOn(testing.suites.named("integrationTest"))
 }

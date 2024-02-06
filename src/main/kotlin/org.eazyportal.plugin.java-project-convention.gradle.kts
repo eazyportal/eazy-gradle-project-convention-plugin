@@ -4,6 +4,7 @@ plugins {
     id("jacoco")
 
     id("java")
+    id("jvm-test-suite")
 }
 
 if (project == project.rootProject) {
@@ -35,6 +36,14 @@ repositories {
 java {
     toolchain {
         languageVersion.set(project.getJavaVersion())
+    }
+}
+
+testing {
+    suites {
+        val test by getting(JvmTestSuite::class) {
+            useJUnitJupiter()
+        }
     }
 }
 
