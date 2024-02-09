@@ -2,6 +2,7 @@ import org.eazyportal.plugin.convention.extension.getJavaVersion
 
 plugins {
     id("jacoco")
+    id("java-test-fixtures")
 
     id("java")
     id("jvm-test-suite")
