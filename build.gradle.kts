@@ -9,6 +9,13 @@ apply(from = "src/main/kotlin/org.eazyportal.plugin.publish-convention.gradle.kt
 
 repositories {
     gradlePluginPortal()
+
+    // TODO: Workaround for
+    // - https://github.com/asciidoctor/asciidoctor-gradle-plugin/issues/679
+    // - https://github.com/asciidoctor/asciidoctor-gradle-plugin/issues/731
+    maven {
+        url = uri("https://archiva-repository.apache.org/archiva/repository/public/")
+    }
 }
 
 java {
