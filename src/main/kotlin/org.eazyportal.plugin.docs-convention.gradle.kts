@@ -6,11 +6,18 @@ plugins {
 }
 
 repositories {
-    ruby {
-        gems()
+    // TODO: Workaround for
+    // - https://github.com/asciidoctor/asciidoctor-gradle-plugin/issues/679
+    // - https://github.com/asciidoctor/asciidoctor-gradle-plugin/issues/731
+    maven {
+        url = uri("https://archiva-repository.apache.org/archiva/repository/public/")
     }
 
     mavenCentral()
+
+    ruby {
+        gems()
+    }
 }
 
 tasks.getByName("asciidoctor", AsciidoctorTask::class) {
