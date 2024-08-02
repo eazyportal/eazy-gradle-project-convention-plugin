@@ -10,12 +10,7 @@ apply(from = "src/main/kotlin/org.eazyportal.plugin.publish-convention.gradle.kt
 repositories {
     gradlePluginPortal()
 
-    // TODO: Workaround for
-    // - https://github.com/asciidoctor/asciidoctor-gradle-plugin/issues/679
-    // - https://github.com/asciidoctor/asciidoctor-gradle-plugin/issues/731
-    maven {
-        url = uri("https://archiva-repository.apache.org/archiva/repository/public/")
-    }
+    mavenCentral()
 }
 
 java {
@@ -36,5 +31,14 @@ dependencies {
     implementation("org.jetbrains.kotlin", "kotlin-gradle-plugin")
 
     implementation("org.asciidoctor.jvm.convert", "org.asciidoctor.jvm.convert.gradle.plugin", project.properties["asciidoctorPluginVersion"] as String)
-    implementation("org.asciidoctor.jvm.gems", "org.asciidoctor.jvm.gems.gradle.plugin", project.properties["asciidoctorPluginVersion"] as String)
+    implementation("org.asciidoctor.jvm.gems", "org.asciidoctor.jvm.gems.gradle.plugin", project.properties["asciidoctorPluginVersion"] as String) {
+        // TODO: Workaround for:
+        // - https://github.com/asciidoctor/asciidoctor-gradle-plugin/issues/679
+        // - https://github.com/asciidoctor/asciidoctor-gradle-plugin/issues/731
+        exclude("com.burgstaller", "okhttp-digest")
+    }
+    // TODO: Workaround for:
+    // - https://github.com/asciidoctor/asciidoctor-gradle-plugin/issues/679
+    // - https://github.com/asciidoctor/asciidoctor-gradle-plugin/issues/731
+    implementation("io.github.rburgst", "okhttp-digest", "1.21")
 }

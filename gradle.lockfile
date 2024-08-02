@@ -1,7 +1,6 @@
 # This is a Gradle generated file for dependency locking.
 # Manual edits can break the build and are not advised.
 # This file is expected to be part of source control.
-com.burgstaller:okhttp-digest:1.10=runtimeClasspath,testRuntimeClasspath
 com.fasterxml.jackson.core:jackson-annotations:2.9.0=runtimeClasspath,testRuntimeClasspath
 com.fasterxml.jackson.core:jackson-core:2.9.8=runtimeClasspath,testRuntimeClasspath
 com.fasterxml.jackson.core:jackson-databind:2.9.8=runtimeClasspath,testRuntimeClasspath
@@ -12,11 +11,12 @@ com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.8=runtimeClasspath,te
 com.github.ben-manes.caffeine:caffeine:2.6.2=runtimeClasspath,testRuntimeClasspath
 com.github.jruby-gradle:jruby-gradle-core-plugin:2.0.2=compileClasspath,implementationDependenciesMetadata,runtimeClasspath,testCompileClasspath,testImplementationDependenciesMetadata,testRuntimeClasspath
 com.google.guava:guava:21.0=runtimeClasspath,testRuntimeClasspath
-com.squareup.okhttp3:okhttp:3.5.0=runtimeClasspath,testRuntimeClasspath
-com.squareup.okio:okio:1.11.0=runtimeClasspath,testRuntimeClasspath
+com.squareup.okhttp3:okhttp:3.12.6=runtimeClasspath,testRuntimeClasspath
+com.squareup.okio:okio:1.15.0=runtimeClasspath,testRuntimeClasspath
 com.sun.activation:javax.activation:1.2.0=runtimeClasspath,testRuntimeClasspath
 io.github.http-builder-ng:http-builder-ng-core:1.0.3=runtimeClasspath,testRuntimeClasspath
 io.github.http-builder-ng:http-builder-ng-okhttp:1.0.3=runtimeClasspath,testRuntimeClasspath
+io.github.rburgst:okhttp-digest:1.21=compileClasspath,implementationDependenciesMetadata,runtimeClasspath,testCompileClasspath,testImplementationDependenciesMetadata,testRuntimeClasspath
 io.netty:netty-buffer:4.1.32.Final=runtimeClasspath,testRuntimeClasspath
 io.netty:netty-codec-http:4.1.32.Final=runtimeClasspath,testRuntimeClasspath
 io.netty:netty-codec:4.1.32.Final=runtimeClasspath,testRuntimeClasspath
