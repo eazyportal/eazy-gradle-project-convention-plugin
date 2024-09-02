@@ -32,19 +32,14 @@ dependencies {
 
     implementation("org.asciidoctor.jvm.convert", "org.asciidoctor.jvm.convert.gradle.plugin", project.properties["asciidoctorPluginVersion"] as String)
     implementation("org.asciidoctor.jvm.gems", "org.asciidoctor.jvm.gems.gradle.plugin", project.properties["asciidoctorPluginVersion"] as String) {
+        // TODO: https://eazyportal.myjetbrains.com/youtrack/issue/TOOLS-54
         exclude("org.codehaus.groovy", "groovy-nio")
-        // TODO: Workaround for:
-        // - https://github.com/asciidoctor/asciidoctor-gradle-plugin/issues/679
-        // - https://github.com/asciidoctor/asciidoctor-gradle-plugin/issues/731
+        // TODO: https://eazyportal.myjetbrains.com/youtrack/issue/TOOLS-54
         exclude("com.burgstaller", "okhttp-digest")
     }
-    // TODO: Workaround for:
-    // - https://github.com/asciidoctor/asciidoctor-gradle-plugin/issues/679
-    // - https://github.com/asciidoctor/asciidoctor-gradle-plugin/issues/731
+    // TODO: https://eazyportal.myjetbrains.com/youtrack/issue/TOOLS-54
     implementation("io.github.rburgst", "okhttp-digest", "1.21")
-    // TODO: workaround for:
-    // - https://github.com/asciidoctor/asciidoctor-gradle-plugin/issues/679
-    // - https://github.com/asciidoctor/asciidoctor-gradle-plugin/issues/734
+    // TODO: https://eazyportal.myjetbrains.com/youtrack/issue/TOOLS-54
     implementation("org.ysb33r.gradle.jruby", "jrubygradle-resolver", "1.0.2") {
         exclude("org.codehaus.groovy", "groovy-nio")
     }
