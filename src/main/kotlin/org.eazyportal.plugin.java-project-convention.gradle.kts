@@ -2,7 +2,8 @@ import org.eazyportal.plugin.convention.extension.getJavaVersion
 
 plugins {
     id("jacoco")
-    id("java-test-fixtures")
+    // TODO: https://github.com/gradle/gradle/issues/16577
+    // id("java-test-fixtures")
 
     id("java")
     id("jvm-test-suite")
@@ -12,6 +13,11 @@ if (project == project.rootProject) {
     apply {
         plugin("jacoco-report-aggregation")
         plugin("org.eazyportal.plugin.dependency-version-lock-convention")
+    }
+} else {
+    // TODO: https://github.com/gradle/gradle/issues/16577
+    apply {
+        plugin("java-test-fixtures")
     }
 }
 
